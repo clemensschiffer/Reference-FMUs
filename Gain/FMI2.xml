@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  fmiVersion="2.0"
+  modelName="Gain"
+  description="This model multiplies the input by a constant."
+  generationTool="Reference FMUs (development build)"
+  guid="{1AE5E10D-9521-4DE3-80B9-D0EAAA7D5AFF}"
+  numberOfEventIndicators="1">
+
+  <ModelExchange
+    modelIdentifier="Gain"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+
+  <CoSimulation
+    modelIdentifier="Gain"
+    canHandleVariableCommunicationStepSize="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true">
+    <SourceFiles>
+      <File name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+
+  <LogCategories>
+    <Category name="logEvents" description="Log events"/>
+    <Category name="logStatusError" description="Log error messages"/>
+  </LogCategories>
+
+  <DefaultExperiment startTime="0" stopTime="3" stepSize="1e-2"/>
+
+  <ModelVariables>
+    <ScalarVariable name="time" valueReference="0" causality="independent" variability="continuous" description="Simulation time">
+      <Real/>
+    </ScalarVariable>
+    <ScalarVariable name="y" valueReference="1" causality="output" variability="continuous" initial="exact" description="Output">
+      <Real start="0" />
+    </ScalarVariable>
+    <ScalarVariable name="x" valueReference="2" causality="input" variability="continuous" initial="approx" description="Input">
+      <Real start="0"/>
+    </ScalarVariable>
+    <ScalarVariable name="c" valueReference="3" causality="parameter" variability="fixed" initial="exact" description="Parameter">
+      <Real start="1"/>
+    </ScalarVariable>
+  </ModelVariables>
+
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="2"/>
+    </Outputs>
+  </ModelStructure>
+
+</fmiModelDescription>
